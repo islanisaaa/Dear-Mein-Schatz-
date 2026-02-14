@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dear Mein Schatz ❤️</title>
+    <style>
+        body {
+            margin: 0; padding: 0; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; height: 100vh;
+            background: linear-gradient(135deg, #fceabb, #f8b500);
+            font-family: 'Poppins', sans-serif; text-align: center; overflow: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9); padding: 30px; border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15); max-width: 90%; z-index: 1;
+            display: flex; flex-direction: column; align-items: center; gap: 20px;
+        }
+
+        h1 { color: #d63384; font-size: 1.8rem; margin: 0; }
+        .gif-container img { width: 180px; border-radius: 10px; }
+
+        .main-buttons { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+        .main-buttons button {
+            padding: 12px 25px; font-size: 1.1rem; font-weight: bold; border: none;
+            border-radius: 30px; cursor: pointer; background-color: #ff4d6d;
+            color: white; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* VIDEO OVERLAY (POPUP) */
+        #videoOverlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); z-index: 10000; justify-content: center; align-items: center;
+        }
+        #videoOverlay iframe { width: 90%; height: 60%; border: none; border-radius: 15px; }
+        .close-btn {
+            position: absolute; top: 20px; right: 20px; color: white;
+            font-size: 2.5rem; cursor: pointer; font-weight: bold;
+        }
+
+        /* TOMBOL COMPLAIN */
+        #complainBtn {
+            background-color: #a0a0a0 !important; color: white !important;
+            padding: 10px 20px !important; font-size: 0.9rem !important;
+            border: none !important; border-radius: 20px !important;
+            position: fixed !important; z-index: 9999 !important;
+            cursor: pointer !important; transition: all 0.1s ease-out !important;
+            top: 85%; left: 50%; transform: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="gif-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTh4bDAzNjcycTlsd2pkcjAzdGFqdmpnNW90dnpzZGltYXY5NmcyeCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/wvYNSqBAMDVx8CEYkt/giphy.gif" alt="Cute GIF">
+        </div>
+        <h1>Special for Valentine's Day ❤️</h1>
+        <p><b>Claim all menu below for FREE!</b></p>
+        <div class="main-buttons">
+            <button onclick="playVideo('https://drive.google.com/file/d/1_Df0R99NBFHj8h-ICUbx9qnNcQVy4-PJ/preview')">Hug 🤗</button>
+            <button onclick="playVideo('https://drive.google.com/file/d/1J2wxQTNWpeH8DudndUv8GBX9EPDMjnUf/preview')">Hug & Kiss 😘</button>
+            <button onclick="playVideo('https://drive.google.com/file/d/1JDKNtMaAjQcFD-UgbRRcN5ESlJ_u3zDc/preview')">Ich liebe dich! ❤️</button>
+        </div>
+    </div>
+
+    <button id="complainBtn" onmouseover="moveButton()" onclick="moveButton()">Report Your Girlfriend 🚩😏</button>
+
+    <div id="videoOverlay">
+        <span class="close-btn" onclick="closeVideo()">×</span>
+        <iframe id="videoPlayer" src="" allow="autoplay"></iframe>
+    </div>
+
+    <script>
+        function playVideo(url) {
+            const overlay = document.getElementById('videoOverlay');
+            const player = document.getElementById('videoPlayer');
+            // Menambahkan parameter autoplay=1 (tetap tergantung setting browser si ayang)
+            player.src = url + "?autoplay=1";
+            overlay.style.display = 'flex';
+        }
+
+        function closeVideo() {
+            const overlay = document.getElementById('videoOverlay');
+            const player = document.getElementById('videoPlayer');
+            player.src = ""; // Berhenti putar video saat ditutup
+            overlay.style.display = 'none';
+        }
+
+        function moveButton() {
+            const btn = document.getElementById('complainBtn');
+            const areaWidth = window.innerWidth - btn.offsetWidth;
+            const areaHeight = window.innerHeight - btn.offsetHeight;
+            const randomX = Math.floor(Math.random() * areaWidth);
+            const randomY = Math.floor(Math.random() * areaHeight);
+            btn.style.left = randomX + 'px';
+            btn.style.top = randomY + 'px';
+        }
+    </script>
+</body>
+</html>
