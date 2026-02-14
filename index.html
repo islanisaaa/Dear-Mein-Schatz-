@@ -33,7 +33,7 @@
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.9); z-index: 10000; justify-content: center; align-items: center;
         }
-        #videoOverlay iframe { width: 90%; height: 60%; border: none; border-radius: 15px; }
+        #videoOverlay iframe { width: 90%; height: 75%; border: none; border-radius: 15px; }
         .close-btn {
             position: absolute; top: 20px; right: 20px; color: white;
             font-size: 2.5rem; cursor: pointer; font-weight: bold;
@@ -46,7 +46,7 @@
             border: none !important; border-radius: 20px !important;
             position: fixed !important; z-index: 9999 !important;
             cursor: pointer !important; transition: all 0.1s ease-out !important;
-            top: 85%; left: 50%; transform: none !important;
+            top: 85%; left: 50%; transform: translateX(-50%) !important;
         }
     </style>
 </head>
@@ -59,9 +59,9 @@
         <h1>Special for Valentine's Day ❤️</h1>
         <p><b>Claim all menu below for FREE!</b></p>
         <div class="main-buttons">
-            <button onclick="playVideo('https://drive.google.com/file/d/1_Df0R99NBFHj8h-ICUbx9qnNcQVy4-PJ/preview')">Hug 🤗</button>
-            <button onclick="playVideo('https://drive.google.com/file/d/1J2wxQTNWpeH8DudndUv8GBX9EPDMjnUf/preview')">Hug & Kiss 😘</button>
-            <button onclick="playVideo('https://drive.google.com/file/d/1JDKNtMaAjQcFD-UgbRRcN5ESlJ_u3zDc/preview')">Ich liebe dich! ❤️</button>
+            <button onclick="playVideo('w94DjgMXKcQ')">Hug 🤗</button>
+            <button onclick="playVideo('a0hbfn5KoCA')">Hug & Kiss 😘</button>
+            <button onclick="playVideo('tNzERMIyzUk')">Ich liebe dich! ❤️</button>
         </div>
     </div>
 
@@ -69,15 +69,15 @@
 
     <div id="videoOverlay">
         <span class="close-btn" onclick="closeVideo()">×</span>
-        <iframe id="videoPlayer" src="" allow="autoplay"></iframe>
+        <iframe id="videoPlayer" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 
     <script>
-        function playVideo(url) {
+        function playVideo(videoId) {
             const overlay = document.getElementById('videoOverlay');
             const player = document.getElementById('videoPlayer');
-            // Menambahkan parameter autoplay=1 (tetap tergantung setting browser si ayang)
-            player.src = url + "?autoplay=1";
+            // Menggunakan format embed YouTube agar lancar & autoplay
+            player.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=0";
             overlay.style.display = 'flex';
         }
 
@@ -96,8 +96,8 @@
             const randomY = Math.floor(Math.random() * areaHeight);
             btn.style.left = randomX + 'px';
             btn.style.top = randomY + 'px';
+            btn.style.transform = 'none';
         }
     </script>
 </body>
-
 </html>
